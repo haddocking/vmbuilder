@@ -11,7 +11,7 @@ echo "[+] Provisioning: Homology Modelling module"
 echo "[++] Downloading & installing HMMER"
 if [ -d /opt/software/hmmer3.1b2/ ]
 then
-	rm -rf /opt/software/hmmer3.1b2/ 
+	rm -rf /opt/software/hmmer3.1b2/
 fi
 wget -q -O /opt/software/hmmer-3.1b2.tar.gz http://selab.janelia.org/software/hmmer3/3.1b2/hmmer-3.1b2.tar.gz > /dev/null
 
@@ -25,30 +25,30 @@ ln -sf /opt/software/hmmer3.1b2/bin/* /opt/bin/
 
 ## MODELLER
 echo "[++] Downloading & installing MODELLER"
-LIC_KEY=$( egrep -v "^#" /vagrant/assets/config/modeller.key) 
+LIC_KEY=$( egrep -v "^#" /vagrant/assets/molmod/config/modeller.key)
 if [ -z "$LIC_KEY" ]
 then
   echo '[!!] No MODELLER license key found, skipping installation' 1>&2
   echo '[!!] To obtain a valid key visit: https://salilab.org/modeller/' 1>&2
-  echo '[!!] and paste it into assets/config/modeller.key !'1>&2
+  echo '[!!] and paste it into assets/molmod/config/modeller.key !'1>&2
 else
   wget -q -O /opt/software/modeller_9.15-1_i386.deb https://salilab.org/modeller/9.15/modeller_9.15-1_i386.deb > /dev/null
-  
+
   env KEY_MODELLER=$LIC_KEY \
       dpkg -i /opt/software/modeller_9.15-1_i386.deb > /dev/null
-  
+
   success=$( cd /usr/lib/modeller9.15/examples/automodel/ \
              && mod9.15 model-default.py 2>&1 | egrep 'Invalid license key' )
-  
+
   if [ ! -z "$success" ]
   then
     echo '[!!] MODELLER installation failed: wrong key' 1>&2
     echo '[!!] To obtain a valid key visit: https://salilab.org/modeller/' 1>&2
     echo '[!!] See the /usr/lib/modeller9.15/modlib/modeller/config.py file' 1>&2
   fi
-  
+
   rm -f /opt/software/modeller_9.15-1_i386.deb
-fi  
+fi
 ##
 
 # Download the pdb_seqres database

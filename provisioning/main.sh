@@ -15,10 +15,10 @@ mkdir -p /opt/data /opt/software /opt/bin /opt/share >& /dev/null
 ## Copy assets
 echo "[+] Copying assets"
 
-cp /vagrant/assets/config/bashrc ~haddocker/.bashrc
+cp /vagrant/assets/molmod/config/bashrc ~haddocker/.bashrc
 chown haddocker:haddocker ~haddocker/.bashrc
 
-cp /vagrant/assets/config/bash_profile ~haddocker/.bash_profile
+cp /vagrant/assets/molmod/config/bash_profile ~haddocker/.bash_profile
 chown haddocker:haddocker ~haddocker/.bash_profile
 
 ## Update system & Install packages
