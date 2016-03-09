@@ -2,7 +2,7 @@
 
 #
 # General Provisioning for data files
-# shared by several modules
+# shared by several modules of the molmod course
 #
 export DEBIAN_FRONTEND=noninteractive # StackOverflow 500764
 echo "[+] Provisioning: Module Data"
