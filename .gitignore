@@ -10,3 +10,6 @@ Thumbs.db
 
 # Vagrant folder
 .vagrant
+
+# Links
+Vagrantfile
