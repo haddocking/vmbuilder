@@ -33,3 +33,5 @@ echo "[++] Downloading & installing PowerFit tutorial"
 git clone https://github.com/haddocking/powerfit-tutorial.git /opt/powerfit-tutorial
 (cd /opt/powerfit-tutorial && g++ contact-chainID.cpp -o contact-chainID) > /dev/null
 ln -sf /opt/powerfit-tutorial/contact-chainID /opt/bin/
+ln -sf /opt/powerfit-tutorial/make-contact-histogram.csh /opt/bin/
+
