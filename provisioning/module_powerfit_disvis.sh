@@ -8,11 +8,10 @@ export DEBIAN_FRONTEND=noninteractive # StackOverflow 500764
 echo "[+] Provisioning: PowerFit and DisVis module"
 
 echo "[++] Downloading PowerFit & DisVis dependencies including fftw for multiple CPU usage "
-apt-get install	-y libfftw3-dev cython > /dev/null
-apt-get install -y python-dev > /dev/null
+apt-get -qq install -y --no-install-recommends libfftw3-dev cython > /dev/null
+apt-get -qq install -y --no-install-recommends python-dev > /dev/null
+apt-get -qq install -y --no-install-recommends libatlas-base-dev gfortran > /dev/null
 pip2.7 -q install --upgrade pip > /dev/null
-pip2.7 -q install --upgrade virtualenv > /dev/null
-apt-get install -y libatlas-base-dev gfortran > /dev/null
 pip2.7 -q install numpy > /dev/null
 pip2.7 -q install matplotlib > /dev/null
 pip2.7 -q install scipy > /dev/null
