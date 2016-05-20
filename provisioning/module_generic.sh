@@ -26,15 +26,15 @@ else
 fi
 ln -sf /opt/software/pdb-tools/*py /opt/bin
 
-echo "[++] Downloading & installing biopython"
-if [ -d /opt/software/biopython ]
+echo "[++] Downloading & installing haddock-tools"
+if [ -d /opt/software/haddock-tools ]
 then
-	cd /opt/software/biopython
+	cd /opt/software/haddock-tools
 	git pull origin master
 else
-	git clone https://github.com/biopython/biopython /opt/software/biopython > /dev/null
+	git clone https://github.com/haddocking/haddock-tools /opt/software/haddock-tools > /dev/null
 fi
-(cd /opt/software/biopython && CPPFLAGS="-w" python setup.py build && python setup.py install) > /dev/null
+ln -sf /opt/software/haddock-tools/* /opt/bin
 
 echo "[++] Downloading & installing pymol-psico"
 if [ -d /opt/software/pymol-psico ]
@@ -60,3 +60,13 @@ fi
 (cd /opt/software/freesasa && git checkout -q with-configure && aclocal && autoconf && automake && ./configure -q && CPPFLAGS="-w" make ) > /dev/null
 ln -sf /opt/software/freesasa/src/freesasa /opt/bin/
 ln -sf /opt/software/freesasa/share/naccess.config /opt/share/
+
+#echo "[++] Downloading & installing biopython"
+#if [ -d /opt/software/biopython ]
+#then
+#	cd /opt/software/biopython
+#	git pull origin master
+#else
+#	git clone https://github.com/biopython/biopython /opt/software/biopython > /dev/null
+#fi
+#(cd /opt/software/biopython && CPPFLAGS="-w" python setup.py build && python setup.py install) > /dev/null
